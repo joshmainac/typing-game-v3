@@ -1,17 +1,13 @@
-import { getTextByKeyword, getRandomTextByNumber } from "@/lib/text/getTextDict"
+import { getTextByMode } from "@/lib/text/getTextDict"
 
 export default function TimeBasePage() {
-    // Example usage: get text by keyword
-    const textByKeyword = getTextByKeyword("mid")
-    
-    // Example usage: get text by keyword and length
-    const textByNumber = getRandomTextByNumber("mid", 200)
+    // Get text by mode (easy mode: keyword "easy" with length 100)
+    const text = getTextByMode("easy")
     
     return (
         <div>
             <h1>Time Base</h1>
-            <p>{textByKeyword}</p>
-            <p>{textByNumber}</p>
+            <p>{text}</p>
         </div>
     )
 }

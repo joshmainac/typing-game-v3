@@ -1,10 +1,18 @@
 // Collection of English text passages for typing practice organized by difficulty
 type Difficulty = "easy" | "mid" | "hard";
+type Mode = "easy" | "mid" | "hard";
 
 const texts: Record<Difficulty, string> = {
     easy: "The quick brown fox jumps over the lazy dog.",
     mid: "The quick brown fox jumps over the lazy dog. This sentence contains every letter of the alphabet at least once. Programming is the art of telling a computer what to do through a series of instructions.",
     hard: "The quick brown fox jumps over the lazy dog. This sentence contains every letter of the alphabet at least once. Typing practice helps improve your speed and accuracy over time. Consistent practice is essential for mastering any skill, including keyboard proficiency. Programming requires logic, creativity, and patience to solve complex problems.",
+};
+
+// Mode configuration: maps mode to keyword and text length
+const modeConfig: Record<Mode, { keyword: Difficulty; length: number }> = {
+    easy: { keyword: "easy", length: 100 },
+    mid: { keyword: "mid", length: 200 },
+    hard: { keyword: "hard", length: 300 },
 };
 
 /**
@@ -37,4 +45,14 @@ export function getRandomTextByNumber(keyword: Difficulty, length: number): stri
     
     // Trim to the exact length if needed, or return the result
     return result.substring(0, length).trim();
+}
+
+/**
+ * Gets text by mode, which includes both keyword and text length
+ * @param mode The mode: "easy" (keyword: easy, length: 100), "mid" (keyword: mid, length: 200), or "hard" (keyword: hard, length: 300)
+ * @returns A string containing English text repeated to match the mode's configured length
+ */
+export function getTextByMode(mode: Mode): string {
+    const config = modeConfig[mode] || modeConfig.mid;
+    return getRandomTextByNumber(config.keyword, config.length);
 }
