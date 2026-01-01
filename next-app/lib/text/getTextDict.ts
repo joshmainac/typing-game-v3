@@ -1,6 +1,6 @@
 // Collection of English text passages for typing practice organized by difficulty
 type Difficulty = "easy" | "mid" | "hard";
-type Mode = "easy" | "mid" | "hard";
+export type Mode = "easy" | "mid" | "hard";
 
 const texts: Record<Difficulty, string> = {
     easy: "The quick brown fox jumps over the lazy dog.",
@@ -55,4 +55,12 @@ export function getRandomTextByNumber(keyword: Difficulty, length: number): stri
 export function getTextByMode(mode: Mode): string {
     const config = modeConfig[mode] || modeConfig.mid;
     return getRandomTextByNumber(config.keyword, config.length);
+}
+
+/**
+ * Returns an array of valid modes
+ * @returns An array of valid mode strings: ["easy", "mid", "hard"]
+ */
+export function getValidModes(): Mode[] {
+    return ["easy", "mid", "hard"];
 }
