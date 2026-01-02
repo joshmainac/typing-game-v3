@@ -23,9 +23,15 @@ export default async function CountBaseModePage({
     const userId = user?.id || null
     
     return (
-        <div>
-            <h1>Count Base - {mode.toUpperCase()}</h1>
-            <p>{text}</p>
+        <div className="max-w-4xl mx-auto px-4 py-8">
+            <div className="mb-6">
+                <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-2">
+                    Count Base
+                </h1>
+                <p className="text-lg text-gray-600 dark:text-gray-400 font-medium">
+                    {mode.toUpperCase()}
+                </p>
+            </div>
             <CountBaseTypingBox targetText={text} userId={userId} />
         </div>
     )
