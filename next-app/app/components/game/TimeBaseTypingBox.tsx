@@ -68,7 +68,10 @@ export default function TimeBaseTypingBox({
     const currentIndex = text.length
 
     return (
-        <div className="relative p-8 rounded-xl bg-white dark:bg-gray-900 border-2 border-gray-300 dark:border-gray-700 shadow-lg">
+        <div 
+            className="typing-box relative p-8 rounded-xl bg-white dark:bg-gray-900 border-2 border-gray-300 dark:border-gray-700 shadow-lg"
+            onClick={(e) => (e.currentTarget.querySelector('input') as HTMLInputElement)?.focus()}
+        >
             {/* Timer and stats display */}
             <div className="mb-6 flex items-center justify-between">
                 <div className="text-center">
@@ -130,7 +133,7 @@ export default function TimeBaseTypingBox({
 
                     // Add blinking effect only before game starts
                     if (isBeforeStart && isFirstChar) {
-                        charClass += " animate-[blink_1s_ease-in-out_infinite]";
+                        charClass += " animate-blink";
                     }
 
                     return (
