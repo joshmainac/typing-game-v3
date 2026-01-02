@@ -52,7 +52,10 @@ export default function ManualEndTypingBox({
     const currentIndex = text.length
 
     return (
-        <div className="relative p-8 rounded-xl bg-white dark:bg-gray-900 border-2 border-gray-300 dark:border-gray-700 shadow-lg">
+        <div 
+            className="typing-box relative p-8 rounded-xl bg-white dark:bg-gray-900 border-2 border-gray-300 dark:border-gray-700 shadow-lg"
+            onClick={(e) => (e.currentTarget.querySelector('input') as HTMLInputElement)?.focus()}
+        >
             {/* Time and stats display */}
             <div className="mb-6 flex items-center justify-between">
                 <div className="text-center">
@@ -95,6 +98,8 @@ export default function ManualEndTypingBox({
                     const isCorrect = typedChar === char;
                     const isTyped = index < text.length;
                     const isCurrent = index === currentIndex;
+                    const isBeforeStart = startTime === null
+                    const isFirstChar = index === 0
 
                     let charClass = "text-gray-400 dark:text-gray-500 transition-colors";
                     if (isTyped) {
@@ -106,6 +111,11 @@ export default function ManualEndTypingBox({
                     // Highlight current character
                     if (isCurrent) {
                         charClass += " bg-blue-200 dark:bg-blue-900/50 border-b-2 border-blue-500 dark:border-blue-400";
+                    }
+
+                    // Add blinking effect only before game starts
+                    if (isBeforeStart && isFirstChar) {
+                        charClass += " animate-blink";
                     }
 
                     return (
