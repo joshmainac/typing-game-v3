@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import CountBaseTypingBox from "@/app/components/game/CountBaseTypingBox"
 import { createClient } from "@/lib/supabase/server"
 import GameTypeDropdown from "@/app/components/game/GameTypeDropdown"
+import ModeDropdown from "@/app/components/game/ModeDropdown"
 
 export default async function CountBaseModePage({
     params,
@@ -29,9 +30,7 @@ export default async function CountBaseModePage({
                 <div className="mb-2">
                     <GameTypeDropdown currentType="count-base" mode={mode} locale={locale} />
                 </div>
-                <p className="text-lg text-gray-600 dark:text-gray-400 font-medium">
-                    {mode.toUpperCase()}
-                </p>
+                <ModeDropdown currentMode={mode as Mode} gameType="count-base" locale={locale} />
             </div>
             <CountBaseTypingBox targetText={text} userId={userId} />
         </div>

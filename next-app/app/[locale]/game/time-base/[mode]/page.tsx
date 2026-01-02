@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import TimeBaseTypingBox from "@/app/components/game/TimeBaseTypingBox"
 import { createClient } from "@/lib/supabase/server"
 import GameTypeDropdown from "@/app/components/game/GameTypeDropdown"
+import ModeDropdown from "@/app/components/game/ModeDropdown"
 
 export default async function TimeBaseModePage({
     params,
@@ -29,9 +30,7 @@ export default async function TimeBaseModePage({
                 <div className="mb-2">
                     <GameTypeDropdown currentType="time-base" mode={mode} locale={locale} />
                 </div>
-                <p className="text-lg text-gray-600 dark:text-gray-400 font-medium">
-                    {mode.toUpperCase()}
-                </p>
+                <ModeDropdown currentMode={mode as Mode} gameType="time-base" locale={locale} />
             </div>
             <TimeBaseTypingBox targetText={text} userId={userId} />
         </div>

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import ManualEndTypingBox from "@/app/components/game/ManualEndTypingBox"
 import { createClient } from "@/lib/supabase/server"
 import GameTypeDropdown from "@/app/components/game/GameTypeDropdown"
+import ModeDropdown from "@/app/components/game/ModeDropdown"
 
 export default async function ManualEndModePage({
     params,
@@ -29,9 +30,7 @@ export default async function ManualEndModePage({
                 <div className="mb-2">
                     <GameTypeDropdown currentType="manual-end" mode={mode} locale={locale} />
                 </div>
-                <p className="text-lg text-gray-600 dark:text-gray-400 font-medium">
-                    {mode.toUpperCase()}
-                </p>
+                <ModeDropdown currentMode={mode as Mode} gameType="manual-end" locale={locale} />
             </div>
             <ManualEndTypingBox targetText={text} userId={userId} />
         </div>
