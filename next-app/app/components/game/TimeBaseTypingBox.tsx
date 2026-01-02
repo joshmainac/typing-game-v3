@@ -5,6 +5,7 @@ import { useRouter, usePathname } from "next/navigation"
 
 import { useCountdownTimer } from "@/app/hooks/useCountdownTimer"
 import { useGameStates } from "@/app/hooks/useGameStats"
+import AnimatedHint from "./AnimatedHint"
 
 interface TimeBaseTypingBoxProps {
     targetText: string
@@ -149,9 +150,7 @@ export default function TimeBaseTypingBox({
 
             {/* Start hint */}
             {startTime === null && !isFinished && (
-                <div className="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
-                    Start typing to begin...
-                </div>
+                <AnimatedHint />
             )}
         </div>
     )
