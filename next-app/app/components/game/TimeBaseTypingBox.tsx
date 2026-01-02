@@ -113,6 +113,8 @@ export default function TimeBaseTypingBox({
                     const isCorrect = typedChar === char;
                     const isTyped = index < text.length;
                     const isCurrent = index === currentIndex;
+                    const isBeforeStart = startTime === null
+                    const isFirstChar = index === 0
 
                     let charClass = "text-gray-400 dark:text-gray-500 transition-colors";
                     if (isTyped) {
@@ -126,8 +128,16 @@ export default function TimeBaseTypingBox({
                         charClass += " bg-blue-200 dark:bg-blue-900/50 border-b-2 border-blue-500 dark:border-blue-400";
                     }
 
+                    // Add blinking effect only before game starts
+                    if (isBeforeStart && isFirstChar) {
+                        charClass += " animate-[blink_1s_ease-in-out_infinite]";
+                    }
+
                     return (
-                        <span key={index} className={charClass}>
+                        <span 
+                            key={index} 
+                            className={charClass}
+                        >
                             {char === " " ? "\u00A0" : char}
                         </span>
                     );
