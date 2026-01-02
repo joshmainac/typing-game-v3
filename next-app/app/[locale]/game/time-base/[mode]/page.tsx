@@ -1,15 +1,15 @@
 import { getTextByMode, getValidModes, type Mode } from "@/lib/text/getTextDict"
 import { notFound } from "next/navigation"
-import TypingBox from "@/app/components/game/TypingBox"
 import TimeBaseTypingBox from "@/app/components/game/TimeBaseTypingBox"
 import { createClient } from "@/lib/supabase/server"
+import GameTypeDropdown from "@/app/components/game/GameTypeDropdown"
 
 export default async function TimeBaseModePage({
     params,
 }: {
-    params: Promise<{ mode: string }>
+    params: Promise<{ mode: string; locale: string }>
 }) {
-    const { mode } = await params
+    const { mode, locale } = await params
     const validModes = getValidModes()
     
     if (!validModes.includes(mode as Mode)) {
@@ -26,9 +26,9 @@ export default async function TimeBaseModePage({
     return (
         <div className="max-w-4xl mx-auto px-4 py-8">
             <div className="mb-6">
-                <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-2">
-                    Time Base
-                </h1>
+                <div className="mb-2">
+                    <GameTypeDropdown currentType="time-base" mode={mode} locale={locale} />
+                </div>
                 <p className="text-lg text-gray-600 dark:text-gray-400 font-medium">
                     {mode.toUpperCase()}
                 </p>
