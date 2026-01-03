@@ -41,13 +41,13 @@ export default async function Home({
               Play Now
             </Link>
             <Link
-              href={`/${locale}/info/privacy-policy`}
+              href={`/${locale}/info/how-to-play`}
               className="px-8 py-4 bg-zinc-200 dark:bg-zinc-800 text-black dark:text-zinc-50 font-semibold rounded-xl hover:bg-zinc-300 dark:hover:bg-zinc-700 transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 w-full text-center"
             >
               How to Play
             </Link>
             <Link
-              href={`/${locale}/auth/register`}
+              href={`/${locale}/settings`}
               className="px-8 py-4 bg-zinc-200 dark:bg-zinc-800 text-black dark:text-zinc-50 font-semibold rounded-xl hover:bg-zinc-300 dark:hover:bg-zinc-700 transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 w-full text-center"
             >
               Settings
