@@ -10,8 +10,8 @@ const texts: Record<TextKeyword, string> = {
 
 // Mode configuration: maps mode to text keyword and text length
 const modeConfig: Record<Mode, { keyword: TextKeyword; length: number }> = {
-    easy: { keyword: "lowercase", length: 100 },
-    mid: { keyword: "mixed-case", length: 200 },
+    easy: { keyword: "lowercase", length: 30 },
+    mid: { keyword: "mixed-case", length: 300 },
     hard: { keyword: "numbers-symbols", length: 300 },
 };
 

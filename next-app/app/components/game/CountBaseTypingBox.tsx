@@ -26,7 +26,7 @@ export default function CountBaseTypingBox({
     const { remainingMs, elapsedMs } = useCountdownTimer(startTime, 999_999_999)
     const { wpm, accuracy } = useGameStates(targetText, text, elapsedMs)
 
-    const isCompleted = text.trim() === targetText.trim() && text.length > 0
+    const isCompleted = text.length >= targetText.length && text.length > 0
 
     // ✅ Redirect when text is completed
     useEffect(() => {
